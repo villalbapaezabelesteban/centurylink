@@ -33,7 +33,7 @@ public class PersonaServiceImpl implements PersonaService {
     @Override
     public void update(Persona persona) {
         if (!personaRepository.existsById(persona.getId())) {
-            new EntityNotFoundException(Persona.class, "id", persona.getId().toString());
+            throw new EntityNotFoundException(Persona.class, "id", persona.getId().toString());
         }
         personaRepository.save(persona);
     }
@@ -41,7 +41,7 @@ public class PersonaServiceImpl implements PersonaService {
     @Override
     public void deleteById(Long id) {
         if (!personaRepository.existsById(id)) {
-            new EntityNotFoundException(Persona.class, "id", id.toString());
+            throw new EntityNotFoundException(Persona.class, "id", id.toString());
         }
         personaRepository.deleteById(id);
     }
